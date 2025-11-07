@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naflume Progress Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .preview-card {
+            width: 1200px;
+            height: 630px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            overflow: hidden;
+        }
+        .left-section {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .right-section {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #f8fafc;
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 10px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+        }
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        .achievement {
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .achievement-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        .achievement-text {
+            flex: 1;
+        }
+        .achievement-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .achievement-desc {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        .cta {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 30px;
+            display: inline-block;
+        }
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+        .circle-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        .circle-2 {
+            width: 60px;
+            height: 60px;
+            bottom: 30%;
+            right: 20%;
+            animation-delay: 2s;
+        }
+        .circle-3 {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-card">
+        <div class="left-section">
+            <div class="floating-elements">
+                <div class="floating-circle circle-1"></div>
+                <div class="floating-circle circle-2"></div>
+                <div class="floating-circle circle-3"></div>
+            </div>
+            <div class="logo">
+                <div class="logo-icon">❤️</div>
+                Naflume
+            </div>
+            <div class="title" id="userTitle">User's Spiritual Journey</div>
+            <div class="subtitle">Track your spiritual growth and inspire others</div>
+            <a href="#" class="cta">Join Naflume Free</a>
+        </div>
+        <div class="right-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="goodDeeds">0</div>
+                    <div class="stat-label">Good Deeds</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalDeeds">0</div>
+                    <div class="stat-label">Total Deeds</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="streakDays">0</div>
+                    <div class="stat-label">Salat Today</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="achievements">0</div>
+                    <div class="stat-label">Achievements</div>
+                </div>
+            </div>
+            <div id="achievementsList" style="margin-top: 30px;">
+                <!-- Achievements will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'User';
+        const good = parseInt(urlParams.get('good')) || 0;
+        const bad = parseInt(urlParams.get('bad')) || 0;
+        const total = parseInt(urlParams.get('total')) || 0;
+        const salat = parseInt(urlParams.get('salat')) || 0;
+
+        // Update the title
+        document.getElementById('userTitle').textContent = `${name}'s Spiritual Journey`;
+
+        // Update stats
+        document.getElementById('goodDeeds').textContent = good;
+        document.getElementById('totalDeeds').textContent = total;
+        document.getElementById('streakDays').textContent = `${salat}/5`;
+
+        // Calculate achievements
+        const achievements = [
+            { icon: '🌟', title: 'First Steps', unlocked: good >= 1 },
+            { icon: '⭐', title: 'Good Deed Master', unlocked: good >= 10 },
+            { icon: '🏆', title: 'Spiritual Warrior', unlocked: good >= 50 },
+            { icon: '👑', title: 'Consistency King', unlocked: total >= 100 },
+            { icon: '💎', title: 'Pure Heart', unlocked: bad === 0 && total > 0 },
+            { icon: '🎯', title: 'Century Club', unlocked: good >= 100 }
+        ];
+
+        const unlockedAchievements = achievements.filter(a => a.unlocked);
+        document.getElementById('achievements').textContent = unlockedAchievements.length;
+
+        // Display achievements
+        const achievementsList = document.getElementById('achievementsList');
+        unlockedAchievements.slice(0, 3).forEach(achievement => {
+            const div = document.createElement('div');
+            div.className = 'achievement';
+            div.innerHTML = `
+                <div class="achievement-icon">${achievement.icon}</div>
+                <div class="achievement-text">
+                    <div class="achievement-title">${achievement.title}</div>
+                    <div class="achievement-desc">Unlocked!</div>
+                </div>
+            `;
+            achievementsList.appendChild(div);
+        });
+    </script>
+</body>
+</html>

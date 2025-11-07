@@ -1,0 +1,358 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    background: #ffffff;
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #eff6ff;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  }
+
+  /* Enhanced Bengali Typography */
+  .font-bangla {
+    font-family: 'Noto Sans Bengali', 'Inter', system-ui, sans-serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent-600 to-accent-700 hover:from-accent-700 hover:to-accent-800 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .card {
+    @apply bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100;
+  }
+
+  .glass-effect {
+    @apply bg-white/90 backdrop-blur-sm border border-gray-200 rounded-xl;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  /* Bengali Typography Enhancements */
+  .bangla-text {
+    @apply font-bangla;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    line-height: 1.7;
+  }
+
+  .bangla-heading {
+    @apply font-bangla;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+  }
+
+  /* Highlight links inside product content (works without typography plugin) */
+  .product-content a {
+    background-color: #fef3c7; /* amber-100 */
+    color: #1d4ed8; /* blue-700 */
+    text-decoration: underline;
+    padding: 0 0.125rem; /* px-0.5 */
+    border-radius: 0.25rem; /* rounded */
+    text-underline-offset: 2px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .product-content a:hover {
+    background-color: #fde68a; /* amber-200 */
+    color: #1e40af; /* blue-800 */
+  }
+}
+
+/* Cinematic Key Highlighter Shelf Animations */
+@keyframes magicalShimmer {
+  0% { transform: translateX(-120%) skewX(-12deg); }
+  100% { transform: translateX(120%) skewX(-12deg); }
+}
+
+@keyframes floatingParticle {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translateY(-10px) translateX(5px) scale(1.1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-5px) translateX(-3px) scale(0.9);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translateY(-15px) translateX(8px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+@keyframes cardParticle {
+  0%, 100% { 
+    transform: translateY(0px) scale(1);
+    opacity: 0.2;
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+@keyframes neoLightFlow {
+  0%, 30% { 
+    background-position: 0% 0%;
+    opacity: 0.3;
+  }
+  35%, 65% { 
+    background-position: 100% 0%;
+    opacity: 1;
+  }
+  70%, 100% { 
+    background-position: 100% 100%;
+    opacity: 0.3;
+  }
+}
+
+@keyframes neoLightPulse {
+  0%, 40% { 
+    box-shadow: 
+      0 0 0 2px rgba(99, 102, 241, 0.3),
+      0 0 20px rgba(99, 102, 241, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.2);
+    opacity: 0.8;
+  }
+  50%, 90% { 
+    box-shadow: 
+      0 0 0 3px rgba(99, 102, 241, 0.8),
+      0 0 30px rgba(99, 102, 241, 0.9),
+      0 0 60px rgba(99, 102, 241, 0.6);
+    opacity: 1;
+  }
+  100% { 
+    box-shadow: 
+      0 0 0 2px rgba(99, 102, 241, 0.3),
+      0 0 20px rgba(99, 102, 241, 0.4),
+      0 0 40px rgba(99, 102, 241, 0.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes etherealFire {
+  0% { 
+    transform: translateY(0px) scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% { 
+    transform: translateY(-3px) scale(1.1) rotate(2deg);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-6px) scale(0.9) rotate(-1deg);
+    opacity: 0.7;
+  }
+  75% { 
+    transform: translateY(-4px) scale(1.05) rotate(1deg);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translateY(0px) scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes etherealFireGlow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.4)) drop-shadow(0 0 10px rgba(255, 69, 0, 0.3));
+  }
+  50% { 
+    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.7)) drop-shadow(0 0 15px rgba(255, 69, 0, 0.5));
+  }
+}
+
+/* Floating Particle Styles */
+.floating-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0.2) 50%, transparent 100%);
+  border-radius: 50%;
+  animation: floatingParticle 6s ease-in-out infinite;
+}
+
+/* Card Particle Styles */
+.card-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.3) 50%, transparent 100%);
+  border-radius: 50%;
+  animation: cardParticle 4s ease-in-out infinite;
+}
+
+/* Neo-Light Border Styles */
+.neo-light-border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(45deg, 
+    rgba(99, 102, 241, 0.8) 0%, 
+    rgba(59, 130, 246, 0.6) 25%, 
+    rgba(168, 85, 247, 0.8) 50%, 
+    rgba(99, 102, 241, 0.6) 75%, 
+    rgba(59, 130, 246, 0.8) 100%);
+  background-size: 200% 200%;
+  animation: neoLightFlow 2s ease-in-out infinite, neoLightPulse 1.5s ease-in-out infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  padding: 2px;
+}
+
+.neo-light-border-delayed {
+  animation-delay: 2s;
+}
+
+/* Ethereal Fire Styles */
+.ethereal-fire {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 165, 0, 0.8) 0%, 
+    rgba(255, 69, 0, 0.6) 30%, 
+    rgba(255, 20, 20, 0.4) 60%, 
+    transparent 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: etherealFire 3s ease-in-out infinite, etherealFireGlow 2s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.ethereal-fire-delayed {
+  animation-delay: 1s;
+  width: 18px;
+  height: 18px;
+  top: -6px;
+  right: -6px;
+}
+
+.ethereal-fire-delayed-2 {
+  animation-delay: 2s;
+  width: 12px;
+  height: 12px;
+  top: -4px;
+  right: -4px;
+}
+
+/* Neon Glow Effects for Product Cards */
+
+@keyframes couponPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+  }
+}
+
+@keyframes couponBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+
+.coupon-indicator {
+  animation: couponPulse 2s ease-in-out infinite;
+}
+
+.coupon-badge {
+  animation: couponBounce 2s ease-in-out infinite;
+}
+
+/* Neon Border Effect */
+.neon-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4) border-box;
+  animation: neonBorderGlow 2s ease-in-out infinite;
+}
+
+@keyframes neonBorderGlow {
+  0%, 100% {
+    border-image: linear-gradient(45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4) 1;
+    box-shadow: 
+      0 0 5px rgba(6, 182, 212, 0.5),
+      0 0 10px rgba(6, 182, 212, 0.3),
+      inset 0 0 5px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    border-image: linear-gradient(45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4) 1;
+    box-shadow: 
+      0 0 10px rgba(6, 182, 212, 0.8),
+      0 0 20px rgba(6, 182, 212, 0.6),
+      inset 0 0 10px rgba(6, 182, 212, 0.2);
+  }
+}
